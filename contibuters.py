@@ -22,7 +22,7 @@ def app(df):
         st.markdown("""#### Github:""")
         st.markdown("[Rohan Goyal](https://github.com/37rohan)")
 
-        st.markdown("""#### LinkedIn:""")
+        st.markdown("""#### Github:""")
         st.markdown("[Rohan Goyal](https://www.linkedin.com/in/rohan-goyal-3a1744200/)")
     
     with col2:
@@ -40,7 +40,7 @@ def app(df):
         st.markdown("""#### Github:""")
         st.markdown("""[Khushi Singhal](https://github.com/misskhushi)""")
 
-        st.markdown("""#### LinkedIn:""")
+        st.markdown("""#### Github:""")
         st.markdown("""[Khushi Singhal](https://www.linkedin.com/in/khushi-singhal-042b18210/)""")
 
     with col3:    
@@ -58,5 +58,5 @@ def app(df):
         st.markdown("""#### Github:""")
         st.markdown("""[Priyanshu Kumar](https://github.com/Priyanshu6378)""")
 
-        st.markdown("""#### LinkedIn:""")
+        st.markdown("""#### Github:""")
         st.markdown("""[Priyanshu Kumar](https://www.linkedin.com/in/priyanshu-kumar-592a90200/)""")

@@ -11,7 +11,7 @@ df = pd.read_csv('Car details v3.csv')
 def load_data():
 
     # dropping these features Coz it has no major scope in the predictions
-    df.drop(['torque','name','engine','seller_type','fuel'],axis=1,inplace=True)
+    df.drop(['year','torque','engine','seller_type','fuel'],axis=1,inplace=True)
 
 
     # Filling Null values using Mode method coz mean and median isn't usefull to fill object type columns
@@ -22,11 +22,22 @@ def load_data():
     # Filtering required names from complicated names
     # For Max Power
     name = []
+    for i in df['name']:
+        splt = i.split()[0]
+        name.append(splt)
+    
+    df['name'] = pd.Series(name)
+
+    # For Max Power
+    name = []
     for i in df['max_power']:
         splt = i.split()[0]
         name.append(splt)
 
     df['max_power'] = pd.Series(name)
+    df.drop(index=4933,axis=0,inplace=True)
+    df['max_power'] = df['max_power'].astype(float).astype(int)
+    
 
     # For Mileage
     name = []
@@ -35,7 +46,7 @@ def load_data():
         name.append(splt)
 
     df['mileage'] = pd.Series(name)
-
+    df['mileage'] = df['mileage'].astype(float)
 
     # using Label encoder for encoding huge no of string values in object type columns
     LE = LabelEncoder()

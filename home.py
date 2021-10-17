@@ -5,10 +5,8 @@ import streamlit as st
 
 def app():
     st.title("Used Car Prediction App")
-    st.text(
-        """
+    st.text("""
         This web app allows a user to predict the prices of a used car based on their 
-        Years, Km Driven, Mileage, Max Power, Seats, Transmission, Owner type parameters.
-        """
-    )
+        Km Driven, Mileage, Max Power, Seats, Transmission, Owner type parameters.
+        """)
     st.image("car.jpg",width=500)

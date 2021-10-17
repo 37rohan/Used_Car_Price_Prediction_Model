@@ -15,14 +15,38 @@ def app(df):
     st.header("Scatterplot")
 
     # Creat a mulit-select option to get x-axis from the user.
-    feature_list = st.multiselect("Select y-axis values:", ('year', 'km_driven', 'mileage', 'max_power', 'seats'))
+    feature_list = st.multiselect("Select y-axis values:", ('km_driven', 'mileage', 'max_power', 'seats'))
 
-    for feature in feature_list:
+    #if 'year' in feature_list:
+     #   fig = plt.figure(figsize=(12, 5))
+      #  st.subheader(f"Scatter plot between year and price")
+       # sns.scatterplot(x='selling_price', y='year', data=df,hue='year')
+        #st.pyplot(fig)
+
+    if 'km_driven' in feature_list:
         fig = plt.figure(figsize=(12, 5))
-        st.subheader(f"Scatter plot between {feature} and price")
-        plt.scatter(x='selling_price', y=feature, data=df)
+        st.subheader(f"Scatter plot between km_driven and price")
+        sns.scatterplot(x='selling_price', y='km_driven', data=df,hue="km_driven",)
         st.pyplot(fig)
-    
+
+    if 'mileage' in feature_list:
+        fig = plt.figure(figsize=(12, 5))
+        st.subheader(f"Scatter plot between mileage and price")
+        sns.scatterplot(x='selling_price', y='mileage', data=df,hue='mileage')
+        st.pyplot(fig)
+
+    if 'max_power' in feature_list:
+        fig = plt.figure(figsize=(12, 5))
+        st.subheader(f"Scatter plot between max_power and price")
+        sns.scatterplot(x='selling_price', y='max_power', data=df,hue='max_power')
+        st.pyplot(fig)
+        
+    elif 'seats' in feature_list:
+        fig = plt.figure(figsize=(12, 5))
+        st.subheader(f"Scatter plot between seats and price")
+        sns.scatterplot(x='selling_price', y='seats', data=df,hue='seats')
+        st.pyplot(fig)
+
     # Create a section for Visualisation Selector
     st.header("Type of Visualization")
     
@@ -33,18 +57,18 @@ def app(df):
     if ("Histogram" in plot_type):
         st.subheader("Histogram")
         # Take column from user.
-        hist_column = st.selectbox("Select the column to create its histogram", ('year', 'km_driven', 'mileage', 'max_power', 'seats'))
+        hist_column = st.selectbox("Select the column to create its histogram", ('km_driven', 'mileage', 'max_power', 'seats'))
         # Plot the chart.
         fig = plt.figure(figsize=(12, 5))
         plt.title(f"Histogram for {hist_column}")
-        plt.hist(x=df[hist_column], bins = 'sturges', edgecolor = 'black')
+        sns.histplot(x=df[hist_column], bins = 'sturges', edgecolor = 'black')
         st.pyplot(fig)
 
     # Create plot for boxplot.
     if ("Box Plot" in plot_type):
         st.subheader("Boxplot")
         # Take column from user.
-        box_column = st.selectbox("Select the column to create its boxplot", ('year', 'km_driven', 'mileage', 'max_power', 'seats'))
+        box_column = st.selectbox("Select the column to create its boxplot", ('km_driven', 'mileage', 'max_power', 'seats'))
         # Plot the chart.
         fig = plt.figure(figsize=(12, 2))
         plt.title(f"Box plot for {box_column}")
