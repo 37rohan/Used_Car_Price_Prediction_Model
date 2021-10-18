@@ -20,12 +20,13 @@ def load_data():
     df['max_power'].fillna(df['max_power'].mode()[0], inplace=True)
 
     # Filtering required names from complicated names
-    # For Max Power
+    # For Car Names
     name = []
     for i in df['name']:
-        splt = i.split()[0]
-        name.append(splt)
+        splt = i.split()[0]#spliting values and taking 0 index value(here we are spliting car names)
+        name.append(splt)#appending spltting values in empty name list
     
+    #here we change name data in Series format and again save it to the original dataset
     df['name'] = pd.Series(name)
 
     # For Max Power
