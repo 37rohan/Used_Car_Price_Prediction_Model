@@ -14,7 +14,8 @@ def app(df):
     # Creat a section for scatter plot
     st.header("Scatterplot")
 
-    # Creat a mulit-select option to get x-axis from the user.
+    # Create a mulit-select option to get y-axis from the user.
+    # It is for telling relationship btwn predicting column and other columns by using Scatterplot
     feature_list = st.multiselect("Select y-axis values:", ('km_driven', 'mileage', 'max_power', 'seats'))
 
     #if 'year' in feature_list:
@@ -24,7 +25,7 @@ def app(df):
         #st.pyplot(fig)
 
     if 'km_driven' in feature_list:
-        fig = plt.figure(figsize=(12, 5))
+        fig = plt.figure(figsize=(12, 5))# For Setting Graph size
         st.subheader(f"Scatter plot between km_driven and price")
         sns.scatterplot(x='selling_price', y='km_driven', data=df,hue="km_driven",)
         st.pyplot(fig)
@@ -41,7 +42,7 @@ def app(df):
         sns.scatterplot(x='selling_price', y='max_power', data=df,hue='max_power')
         st.pyplot(fig)
         
-    elif 'seats' in feature_list:
+    if 'seats' in feature_list:
         fig = plt.figure(figsize=(12, 5))
         st.subheader(f"Scatter plot between seats and price")
         sns.scatterplot(x='selling_price', y='seats', data=df,hue='seats')
@@ -60,7 +61,7 @@ def app(df):
         hist_column = st.selectbox("Select the column to create its histogram", ('km_driven', 'mileage', 'max_power', 'seats'))
         # Plot the chart.
         fig = plt.figure(figsize=(12, 5))
-        plt.title(f"Histogram for {hist_column}")
+        plt.title(f"Histogram for {hist_column}")#For giving title to the graph on the basis of user choice
         sns.histplot(x=df[hist_column], bins = 'sturges', edgecolor = 'black')
         st.pyplot(fig)
 
@@ -75,7 +76,7 @@ def app(df):
         sns.boxplot(df[box_column])
         st.pyplot(fig)
 
-    # Create plot for boxplot.
+    # Create Correlation Heatmap.
     if ("Correlation Heatmap" in plot_type):
         st.subheader("Correlation Heatmap")
         # Plot the chart.
